@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <header>
-        <h1> Фільми та серіали</h1>
-    </header>
-    <form id="search-form">
-        <input type="text" id="serch" placeholder="Введіть назву фільму" />
-        <button type="submit">Пошук</button>
-    </form>
+    <div id="background">
+        <header>
+            <h1> Фільми та серіали</h1>
+        </header>
+    </div>
+
     <div id="filters">
         <label for="ganre">Жанр:</label>
         <select id="genre">
@@ -50,14 +49,19 @@
             <option value="1996">1996</option>
             <option value="1931">1931</option>
         </select>
-        <label for="duration">Тривалість</label>
+        <label for="duration">Тривалість:</label>
         <select>
             <option value="all">Будь-яка</option>
             <option value="short">Меньше 110 хв</option>
             <option value="medium">110-200 хв</option>
             <option value="long">Понад 200 хв</option>
         </select>
+        <form id="search-form">
+            <input type="text" id="serch" placeholder="Введіть назву фільму" />
+            <button type="submit">Пошук</button>
+        </form>
     </div>
+   
     <div class="container">
         <div class="list">
             <ul>
@@ -93,7 +97,7 @@
                     <td>Девід Ф. Сандберг</td>
                 </tr>
             </table>
-
+            
             <div class="description">
                 <h4>Опис</h4>
                 <p>Група молодих людей стає заручниками обставин, оскільки мимоволі потрапляють в справжню часову петлю, де змушені переживати суцільний жах, коли на них полює таємничий вбивця в масці. Друзі розуміють, що єдиним шляхом порятунку для них є дожити до світанку. Але в цій темряві та страху дуже важко протягнутись такий довгий час. Та вони готові спробувати.</p>
@@ -394,15 +398,15 @@
             <table class="details-table">
                 <tr>
                     <th>Рік виходу:</th>
-                    <td>2024</td>
+                    <td>2011</td>
                 </tr>
                 <tr>
                     <th>Тривалість:</th>
-                    <td>1440 хв</td>
+                    <td>6 200 хв</td>
                 </tr>
                 <tr>
                     <th>Жанр:</th>
-                    <td>мелодрама, фентезі</td>
+                    <td>мелодрами, драми, пригоди, фантастика</td>
                 </tr>
                 <tr>
                     <th>Країна:</th>
@@ -410,7 +414,9 @@
                 </tr>
                 <tr>
                     <th>Режисер:</th>
-                    <td>Не зазначено</td>
+                    <td>
+                        Ральф Хемекер, Рон Андервуд, Dean White
+                    </td>
                 </tr>
             </table>
 
