@@ -17,7 +17,15 @@ img {
     width: 350px;
     height: 450px;
     object-fit: contain; /* Забезпечує правильне відображення без обрізання */
+    transition: background-color 1s linear;
+
 }
+
+    img:hover {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
 #background{
     background-image: url('https://bogatyr.club/uploads/posts/2023-06/thumbs/1686997876_bogatyr-club-p-kirpichnaya-stena-neon-fon-vkontakte-1.jpg');
     background-position: center; /* выравнивание картинки по центру */
@@ -30,6 +38,7 @@ header {
     font-size: 30px; /* Розмір шрифту */
     animation: fadeIn 2s ease-in-out;
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -53,8 +62,13 @@ body {
     color: #ffffff;
 
 }
+    .title:hover {
+        opacity: 0.5;
+        cursor: pointer;
+    }
 /* Стилі для бокової панелі */
 .sidebar {
+    display: none; /* прихована */
     width: 300px; /* Фіксована ширина */
     background: #fff; /* Фон білий */
     padding: 15px; /* Внутрішній відступ */
