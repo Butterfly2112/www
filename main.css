@@ -66,15 +66,25 @@ body {
         opacity: 0.5;
         cursor: pointer;
     }
-/* Стилі для бокової панелі */
+/* Загальні стилі для бічної панелі */
 .sidebar {
-    display: none; /* прихована */
-    width: 300px; /* Фіксована ширина */
-    background: #fff; /* Фон білий */
-    padding: 15px; /* Внутрішній відступ */
-    border-radius: 10px; /* Закруглені кути */
-    margin-right: 700px;
+    display: none; /* Початково прихована */
+    width: 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    position: fixed; /* Фіксоване позиціонування */
+    top: 0;
+    right: 0; /* Відстань від правого краю */
+    z-index: 1000;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
+
+
+
+
 
 /* Таблиця характеристик */
 .details-table {
