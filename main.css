@@ -1,12 +1,16 @@
-﻿.container {
-    display: flex; /* Встановлює контейнер як flexbox для гнучкого розташування елементів */
-    padding: 20px; /* Встановлює внутрішні відступи для кращого вигляду */
+﻿/* Контейнер для фільмів */
+.container {
+    display: inline-block;
+    gap: 20px;
+    margin: 2px;
 }
 
-/* Основний список */
+/* Стиль для кожного фільму */
 .list {
-    flex: 1; /* Розтягує список на всю доступну ширину (крім бокової панелі) */
+    box-sizing: border-box; /* Враховуємо відступи в розмірах */
+    text-align: center; /* Текст всередині фільму вирівняний по центру */
 }
+
 
     .list ul {
         list-style-type: none; /* Прибирає маркери списку */
@@ -17,11 +21,23 @@ img {
     width: 350px;
     height: 450px;
     object-fit: contain; /* Забезпечує правильне відображення без обрізання */
-    transition: background-color 1s linear;
 
 }
 
     img:hover {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+/* Стилі для заголовка */
+.title {
+    font-size: 20px; /* Встановлює розмір шрифту */
+    font-weight: bold; /* Робить текст жирним */
+    margin-top: 10px; /* Додає відступ зверху */
+    color: #ffffff;
+}
+
+    .title:hover {
         opacity: 0.5;
         cursor: pointer;
     }
@@ -54,18 +70,6 @@ body {
     background: #1e013d;
 }
 
-/* Стилі для заголовка */
-.title {
-    font-size: 20px; /* Встановлює розмір шрифту */
-    font-weight: bold; /* Робить текст жирним */
-    margin-top: 10px; /* Додає відступ зверху */
-    color: #ffffff;
-
-}
-    .title:hover {
-        opacity: 0.5;
-        cursor: pointer;
-    }
 /* Загальні стилі для бічної панелі */
 .sidebar {
     display: none; /* Початково прихована */
