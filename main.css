@@ -1,9 +1,50 @@
 ﻿/* Контейнер для фільмів */
 .container {
     display: inline-block;
-    gap: 20px;
     margin: 2px;
 }
+.hidden {
+    display: none;
+}
+
+.rating-container {
+    margin-top: 15px;
+    opacity: 0;
+}
+
+    .rating-container.show {
+        display: block;
+        opacity: 1;
+    }
+/* Поле коментаря */
+.comment {
+    width: 90%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+/* Блок зірок */
+.stars {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: #c9c0cc;
+    transition: color 0.2s;
+}
+
+    .star.selected {
+        color: #3e0166;
+    }
 
 /* Стиль для кожного фільму */
 .list {
@@ -72,22 +113,25 @@ body {
 
 /* Загальні стилі для бічної панелі */
 .sidebar {
-    display: none; /* Початково прихована */
+    position: fixed;
+    top: 0;
+    right: -320px; /* Початково прихована за межами екрану */
     width: 300px;
+    height: 100%;
     background: #fff;
     padding: 15px;
-    border-radius: 10px;
-    position: fixed; /* Фіксоване позиціонування */
-    top: 0;
-    right: 0; /* Відстань від правого краю */
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
+    transition: transform 0.5s ease-in-out; /* Додаємо плавну анімацію */
 }
 
-
-
+/* Коли бічна панель активна (відкрита) */
+.sidebar.show {
+    transform: translateX(-320px); /* Зсуваємо вліво, щоб показати */
+}
 
 
 /* Таблиця характеристик */
@@ -116,17 +160,29 @@ body {
     }
 
 /* Кнопки */
-.watched, .watch {
+.watched, .watch, .rating {
     width: 90%;
     text-align: center; /* Вирівнювання тексту по центру */
     padding: 10px; /* Внутрішній відступ для збільшення розміру кнопки */
     margin-top: 10px; /* Відступ зверху */
-    border: 2px solid #14012e; /* Видаляє рамку */
+    border: 2px solid; /* Видаляє рамку */
     border-radius: 16px; /* Закруглює кути кнопки */
     cursor: pointer; /* Змінює вигляд курсору при наведенні */
     display: block; /* Зробить кнопку блочним елементом */
     margin: 10px auto; /* Відступ зверху і по центру горизонтально */
 }
+/* Кнопка "Підтвердити оцінку" */
+.rating {
+    background: #bd77f7;
+    color: white;
+    transition: background 0.4s;
+    padding: 8px; /* Внутрішній відступ для збільшення розміру кнопки */
+    margin-top: 8px; /* Відступ зверху */
+}
+
+    .rating:hover {
+        background: #8352ab;
+    }
 
 /* Стиль кнопки "Переглянуто" */
 .watched {
@@ -134,6 +190,10 @@ body {
     color: white;
     transition: background 0.4s; /* Плавна анімація зміни кольору */
 }
+    /* Зміна кольору кнопки "Переглянуто" при наведенні */
+    .watched:hover {
+        background-color: #7704bf;
+    }
 
 /* Стиль кнопки "Переглянути фільм" */
 .watch {
@@ -143,17 +203,10 @@ body {
     text-align: center; /* Вирівнювання тексту */
     transition: background 0.4s; /* Плавна анімація зміни кольору */
 }
-
-/* Зміна кольору кнопки "Переглянуто" при наведенні */
-.watched:hover {
-    background-color: #7704bf;
-}
-
-/* Зміна кольору кнопки "Переглянути фільм" при наведенні */
-.watch:hover {
-    background-color: #4b44b3;
-}
-
+    /* Зміна кольору кнопки "Переглянути фільм" при наведенні */
+    .watch:hover {
+        background-color: #4b44b3;
+    }
 /* Опис фільму */
 .description {
     line-height: 1.5; /* відстань між рядками */
