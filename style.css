@@ -54,9 +54,19 @@
 
 
     .list ul {
-        list-style-type: none; /* Прибирає маркери списку */
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(3, 350px); /* 3 фільми в ряд */
+        gap: 20px;
+        justify-content: start;
     }
-
+    .list .item {
+        width: 350px;
+        margin-bottom: 20px;
+        display: flex; /* або block, якщо не потрібен flex */
+        flex-direction: column;
+        align-items: center;
+    }
 /* Стилі для зображень */
 img {
     width: 350px;
@@ -76,6 +86,7 @@ img {
     font-weight: bold; /* Робить текст жирним */
     margin-top: 10px; /* Додає відступ зверху */
     color: #ffffff;
+    padding-bottom: 40px;
 }
 
     .title:hover {
@@ -85,7 +96,7 @@ img {
 
 #background{
     background-image: url('https://bogatyr.club/uploads/posts/2023-06/thumbs/1686997876_bogatyr-club-p-kirpichnaya-stena-neon-fon-vkontakte-1.jpg');
-    background-position: center; /* выравнивание картинки по центру */
+    background-position: center;
 }
 
 header {
@@ -264,6 +275,7 @@ body {
         margin-right: 10px; /* Відступ справа від тексту */
         color: snow;
         font-size: 17px;
+        padding-left: 10px;
     }
 
     /* Оформлення випадаючих списків */

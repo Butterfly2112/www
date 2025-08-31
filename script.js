@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Додаємо відфільтровані та відсортовані елементи у список
         filteredItems.forEach(movie => {
-            movie.style.display = 'list-item'; // Показуємо фільм
+            movie.style.display = 'flex'; // Показуємо фільм (або '')
             movieList.appendChild(movie);
         });
 
