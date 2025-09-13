@@ -227,3 +227,24 @@ document.addEventListener("DOMContentLoaded", function () {
     yearFilter.addEventListener("change", filterMovies);
     durationFilter.addEventListener("change", filterMovies);
 });
+
+//показати назву фільму при відкритті бокової панелі
+function toggleSidebar(id) {
+    const sidebar = document.getElementById(id);
+    const movieItem = document.querySelector(`[onclick="toggleSidebar('${id}')"]`);
+
+    if (currentOpenSidebar && currentOpenSidebar !== sidebar) {
+        currentOpenSidebar.classList.remove("show");
+        document.querySelector(`[onclick="toggleSidebar('${currentOpenSidebar.id}')"]`).classList.remove("show-title");
+    }
+
+    if (!sidebar.classList.contains("show")) {
+        sidebar.classList.add("show");
+        movieItem.classList.add("show-title");
+        currentOpenSidebar = sidebar;
+    } else {
+        sidebar.classList.remove("show");
+        movieItem.classList.remove("show-title");
+        currentOpenSidebar = null;
+    }
+}

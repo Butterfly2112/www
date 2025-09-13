@@ -4,6 +4,7 @@
     <script src="script.js"></script>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Заплановані фільми</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -15,8 +16,9 @@
         </header>
     </div>
 
+ <div class="controls">
     <div id="filters">
-        <label for="ganre">Жанр:</label>
+        <label for="genre">Жанр:</label>
         <select id="genre">
             <option value="all">Всі жанри</option>
             <option value="жахи">жахи</option>
@@ -29,6 +31,7 @@
             <option value="трилер">трилер</option>
             <option value="крімінал">крімінал</option>
         </select>
+
         <label for="year">Рік:</label>
         <select id="year">
             <option value="all">Всі</option>
@@ -38,8 +41,9 @@
             <option value="2011_2002">2011 - 2002</option>
             <option value="1998_1931">1998 - 1931</option>
         </select>
+
         <label for="duration">Тривалість:</label>
-        <select>
+        <select id="duration">
             <option value="all">Будь-яка</option>
             <option value="first_small">Від меньшого до більшого</option>
             <option value="first_big">Від більшого до меньшого</option>
@@ -47,11 +51,14 @@
             <option value="medium">110-200 хв</option>
             <option value="long">Понад 200 хв</option>
         </select>
-        <form id="search-form">
-            <input type="text" id="search" placeholder="Введіть назву фільму" />
-            <button type="submit">Пошук</button>
-        </form>
     </div>
+
+    <form id="search-form">
+        <input type="text" id="search" placeholder="Введіть назву фільму" />
+        <button type="submit">🔍︎</button>
+    </form>
+</div>
+
    
     <div class="container">
         <div class="list">
@@ -222,7 +229,7 @@
                     <div>
                         <img src="https://upload.wikimedia.org/wikipedia/uk/6/68/%D0%9F%D0%BE%D1%81%D1%82%D0%B5%D1%80_%D0%B4%D0%BE_%D1%84%D1%96%D0%BB%D1%8C%D0%BC%D1%83_%C2%AB%D0%A1%D1%82%D1%80%D0%B8%D0%BF%D1%82%D0%B8%D0%B7%D0%B5%D1%80%D0%BA%D0%B8%C2%BB%2C_2019.jpg" alt="Шахрайки з Волл-Стріт" class="image" />
                     </div>
-                    <div class="title">Шахрайки з Волл-Стріть</div>
+                    <div class="title">Шахрайки з Волл-Стріт</div>
                 </li>
                 <li class="item" onclick="toggleSidebar('sidebar29')">
                     <div>

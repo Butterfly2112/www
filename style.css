@@ -3,6 +3,7 @@
     display: inline-block;
     margin: 2px;
 }
+
 .hidden {
     display: none;
 }
@@ -12,10 +13,11 @@
     opacity: 0;
 }
 
-    .rating-container.show {
-        display: block;
-        opacity: 1;
-    }
+.rating-container.show {
+    display: block;
+    opacity: 1;
+}
+
 /* Поле коментаря */
 .comment {
     width: 90%;
@@ -39,72 +41,95 @@
     font-size: 30px;
     cursor: pointer;
     color: #c9c0cc;
-    transition: color 0.2s;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
-    .star.selected {
-        color: #3e0166;
-    }
+.star:hover {
+    color: #b266ff;
+    text-shadow: 0 0 10px #a020f0, 0 0 20px #a020f0, 0 0 30px #a020f0;
+}
+
+.star.selected {
+    color: #ffffff;
+    text-shadow: 0 0 10px #b266ff, 0 0 20px #b266ff, 0 0 40px #b266ff, 0 0 60px #b266ff;
+}
 
 /* Стиль для кожного фільму */
 .list {
-    box-sizing: border-box; /* Враховуємо відступи в розмірах */
-    text-align: center; /* Текст всередині фільму вирівняний по центру */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px 0;
 }
 
+.list ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    gap: 25px;
+    justify-content: start;
+}
 
-    .list ul {
-        list-style-type: none;
-        display: grid;
-        grid-template-columns: repeat(3, 350px); /* 3 фільми в ряд */
-        gap: 20px;
-        justify-content: start;
-    }
-    .list .item {
-        width: 350px;
-        margin-bottom: 20px;
-        display: flex; /* або block, якщо не потрібен flex */
-        flex-direction: column;
-        align-items: center;
-    }
+.list .item {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.616);
+}
+
+.item .title {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+.item:hover .title,
+.item.show-title .title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Стилі для зображень */
 img {
     width: 350px;
     height: 450px;
-    object-fit: contain; /* Забезпечує правильне відображення без обрізання */
-
+    object-fit: contain;
 }
 
-    img:hover {
-        opacity: 0.5;
-        cursor: pointer;
-    }
+img:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
 
 /* Стилі для заголовка */
 .title {
-    font-size: 20px; /* Встановлює розмір шрифту */
-    font-weight: bold; /* Робить текст жирним */
-    margin-top: 10px; /* Додає відступ зверху */
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
     color: #ffffff;
     padding-bottom: 40px;
 }
 
-    .title:hover {
-        opacity: 0.5;
-        cursor: pointer;
-    }
+.title:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
 
-#background{
-    background-image: url('https://bogatyr.club/uploads/posts/2023-06/thumbs/1686997876_bogatyr-club-p-kirpichnaya-stena-neon-fon-vkontakte-1.jpg');
+#background {
     background-position: center;
 }
 
 header {
-    color: white; /* Білий текст */
-    text-align: center; /* Вирівнюємо заголовок по центру */
-    padding: 20px 0; /* Внутрішні відступи зверху та знизу */
-    font-size: 30px; /* Розмір шрифту */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 30px;
     animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 15px #000000, 0 0 20px #ffffff;
 }
 
 @keyframes fadeIn {
@@ -112,176 +137,190 @@ header {
         opacity: 0;
         transform: translateY(-20px);
     }
-
     100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 body {
-    background: #1e013d;
+    background-image: url('img/backgr.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* Загальні стилі для бічної панелі */
+/* Бічна панель */
 .sidebar {
+    font-size: 17px;
+    color: white;
     position: fixed;
     top: 0;
-    right: -320px; /* Початково прихована за межами екрану */
-    width: 300px;
+    right: -400px;
+    width: 350px;
     height: 100%;
-    background: #fff;
+    background-color: #21053bd2;
     padding: 15px;
     border-radius: 10px 0 0 10px;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.8);
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
-    transition: transform 0.5s ease-in-out; /* Додаємо плавну анімацію */
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Коли бічна панель активна (відкрита) */
 .sidebar.show {
-    transform: translateX(-320px); /* Зсуваємо вліво, щоб показати */
+    transform: translateX(-400px);
 }
-
 
 /* Таблиця характеристик */
 .details-table {
-    width: 100%; /* Таблиця розтягується на всю ширину бокової панелі */
-    border-collapse: collapse; /* Об’єднує межі комірок, щоб не було подвійних ліній */
+    width: 100%;
+    border-collapse: collapse;
 }
 
-    /* Стилі для комірок таблиці */
-    .details-table th,
-    .details-table td {
-        padding: 9px; /* Внутрішній відступ у комірках */
-        border: 1px solid #ddd; /* Світло-сіра рамка між комірками */
-        text-align: left; /* Вирівнювання тексту по лівому краю */
-    }
+.details-table th,
+.details-table td {
+    padding: 9px;
+    text-align: left;
+}
 
-    /* Стилі для заголовків таблиці */
-    .details-table th {
-        background-color: #f4f4f4f4; /* Фон заголовків таблиці */
-    }
+.details-table th {
+    background-color: #170429c9;
+}
 
-    /* Підсвічування рядка при наведенні */
-    .details-table tr:hover {
-        background-color: #f7dbff; /* Колір змінюється при наведенні курсору */
-        cursor: default;/*курсор не змінюється при наведенні*/
-    }
+.details-table tr:hover {
+    filter: brightness(60%);
+    cursor: default;
+}
 
 /* Кнопки */
-.watched, .watch, .rating {
+.watched,
+.watch,
+.rating {
+    font-size: 15px;
     width: 90%;
-    text-align: center; /* Вирівнювання тексту по центру */
-    padding: 10px; /* Внутрішній відступ для збільшення розміру кнопки */
-    margin-top: 10px; /* Відступ зверху */
-    border: 2px solid; /* Видаляє рамку */
-    border-radius: 16px; /* Закруглює кути кнопки */
-    cursor: pointer; /* Змінює вигляд курсору при наведенні */
-    display: block; /* Зробить кнопку блочним елементом */
-    margin: 10px auto; /* Відступ зверху і по центру горизонтально */
+    text-align: center;
+    padding: 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
 }
+
 /* Кнопка "Підтвердити оцінку" */
 .rating {
-    background: #bd77f7;
+    background: #853ac7b0;
     color: white;
     transition: background 0.4s;
-    padding: 8px; /* Внутрішній відступ для збільшення розміру кнопки */
-    margin-top: 8px; /* Відступ зверху */
+    padding: 8px;
+    margin-top: 8px;
 }
 
-    .rating:hover {
-        background: #8352ab;
-    }
+.rating:hover {
+    filter: brightness(70%);
+}
 
-/* Стиль кнопки "Переглянуто" */
+/* Кнопка "Переглянуто" */
 .watched {
-    background-color: #9905f5;
+    background-color: #853ac7b0;
     color: white;
-    transition: background 0.4s; /* Плавна анімація зміни кольору */
+    transition: background 0.4s;
 }
-    /* Зміна кольору кнопки "Переглянуто" при наведенні */
-    .watched:hover {
-        background-color: #7704bf;
-    }
 
-/* Стиль кнопки "Переглянути фільм" */
-.watch {
-    background-color: #6b60f7;
-    color: white;
-    text-decoration: none; /* Видаляє підкреслення у посилання */
-    text-align: center; /* Вирівнювання тексту */
-    transition: background 0.4s; /* Плавна анімація зміни кольору */
+.watched:hover {
+    filter: brightness(70%);
 }
-    /* Зміна кольору кнопки "Переглянути фільм" при наведенні */
-    .watch:hover {
-        background-color: #4b44b3;
-    }
+
+/* Кнопка "Переглянути фільм" */
+.watch {
+    background-color: #3f0e6bb0;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.4s;
+}
+
+.watch:hover {
+    filter: brightness(70%);
+}
+
+/* Текстова область */
+textarea {
+    background-color: #23083ca4;
+    color: white;
+}
+
 /* Опис фільму */
 .description {
-    line-height: 1.5; /* відстань між рядками */
+    line-height: 1.5;
 }
+
 /* Блок з кнопками та описом */
 .right-content {
-    flex-grow: 1; /* Розширюється на всю доступну ширину */
+    flex-grow: 1;
 }
-/* Стилі для форми пошуку */
+
+/* Форми пошуку */
 #search-form {
-    display: flex; /* Розташовує елементи в рядок */
+    display: flex;
     justify-content: right;
-
 }
-    /* Поле введення пошуку */
-    #search-form input {
-        width: 200px; /* Фіксована ширина поля */
-        padding: 10px 20px; /* Відступи всередині */
-        font-size: 15px; /* Розмір тексту */
-        border-radius: 5px; /* Закруглені краї */
-        position: relative;
-        top: -37px; /* Піднімає кнопку на 10px */
-    }
 
+#search-form input {
+    width: 220px;
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #7b4ca0;
+    background: #2b0a4a;
+    color: #fff;
+    outline: none;
+    position: relative;
+    top: -47px;
+}
 
-    /* Кнопка пошуку */
-    #search-form button {
-        background-color: #6f06d1;
-        color: white; /* Білий текст */
-        border: none; /* Видаляємо рамку */
-        padding: 10px 10px; /* Внутрішні відступи */
-        font-size: 15px; /* Розмір тексту */
-        margin-left: 9px; /* Відступ між полем і кнопкою */
-        position: relative;
-        top: -37px; /* Піднімає кнопку на 10px */
-        border-radius: 5px; /* Закруглені краї */
-        cursor: pointer; /* Вказує, що це кнопка */
-        transition: background 0.3s; /* Плавна анімація зміни кольору */
-    }
+#search-form button {
+    background: #2b0a4a;
+    color: #fff;
+    border: none;
+    padding: 5px 5px;
+    font-size: 15px;
+    margin: 0 10px;
+    position: relative;
+    top: -47px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-        /* Ефект при наведенні на кнопку пошуку */
-        #search-form button:hover {
-            background-color: #430380; 
-        }
+#search-form button:hover {
+    filter: brightness(115%);
+    transform: scale(1.1);
+}
 
-/* Стилі для блоку фільтрів */
+/* Блок фільтрів */
 #filters {
-    background: linear-gradient(to bottom, #1c104a, #1e013d );
-    padding: 15px; /* Внутрішні відступи */
+    background-color: #0000006a;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-    /* Оформлення міток (label) */
-    #filters label {
-        font-style: italic;
-        margin-right: 10px; /* Відступ справа від тексту */
-        color: snow;
-        font-size: 17px;
-        padding-left: 10px;
-    }
+#filters label {
+    font-style: italic;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 17px;
+    padding-left: 12px;
+}
 
-    /* Оформлення випадаючих списків */
-    #filters select {
-        padding: 8px; /* Відступи всередині */
-        font-size: 15px; /* Розмір тексту */
-        border-radius: 5px; /* Закруглені краї */
-        cursor: pointer; /* Вказує, що можна взаємодіяти */
-    }
+#filters select {
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #7b4ca0;
+    background: #2b0a4a;
+    color: #fff;
+    cursor: pointer;
+}
